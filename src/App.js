@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import api from './components/api.js';
+
+const client = new api();
 
 class App extends Component {
+  componentDidMount() {
+    client.get('http://dog.ceo/api/breeds/list/all');
+  }
   render() {
     return (
       <div className="App">
