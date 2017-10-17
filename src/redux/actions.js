@@ -26,6 +26,14 @@ export function getAllBreeds() {
   return GET_ALL_BREEDS;
 }
 
+export function getAllBreedsAsync(dispatch) {
+  return (dispatch) => {
+    setTimeout(() => {
+      dispatch(GET_ALL_BREEDS);
+    }, 2000);
+  }
+}
+
 export function getSubbreedsForBreed(breed) {
   return GET_SUBBREEDS_FOR_BREED;
 }
