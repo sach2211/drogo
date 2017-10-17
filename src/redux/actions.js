@@ -1,47 +1,72 @@
+import api from '../components/api.js';
+const apiClient = new api();
+
 /**
- * Actions
+ * Actions Types
  */
-export const GET_ALL_BREEDS = {
-  type: 'GET_ALL_BREEDS'
-};
+export const ACTION_TYPES = {
 
-export const GET_SUBBREEDS_FOR_BREED = {
-  type: 'GET_SUBBREEDS_FOR_BREED'
-};
+  GET_ALL_BREEDS: 'GET_ALL_BREEDS',
 
-export const GET_IMAGES_FOR_BREED = {
-  type: 'GET_IMAGES_FOR_BREED'
-};
+  UPDATE_BREEDS: 'UPDATE_BREEDS',
 
-export const GET_IMAGES_FOR_SUBBREAD = {
-  type: 'GET_IMAGES_FOR_SUBBREAD'
-};
+  GET_SUBBREEDS_FOR_BREED: 'GET_SUBBREEDS_FOR_BREED',
+
+  GET_IMAGES_FOR_BREED: 'GET_IMAGES_FOR_BREED',
+
+  GET_IMAGES_FOR_SUBBREAD: 'GET_IMAGES_FOR_SUBBREAD'
+
+}
 
 
 /**
  * Action Creators
  */
 
-export function getAllBreeds() {
-  return GET_ALL_BREEDS;
-}
+export const ACTION_CREATORS = {
 
-export function getAllBreedsAsync(dispatch) {
-  return (dispatch) => {
-    setTimeout(() => {
-      dispatch(GET_ALL_BREEDS);
-    }, 2000);
+  /**
+   * 
+   * Fetches all the data from api
+   */
+  getAllBreedsAsync(dispatch) {
+    // returns a thunk
+    return (dispatch) => {
+      apiClient
+      .get('http://dog.ceo/api/breeds/list/all')
+      .then((resp) => {
+        dispatch(this.updateBreeds(resp.body.message));
+      }, 2000);
+    }
+  },
+  
+  /**
+   * 
+   * Updates the data in the store
+   */
+  updateBreeds(data) {
+    return {
+      type: ACTION_TYPES.UPDATE_BREEDS,
+      data: data
+    };
+  },
+  
+
+  getSubbreedsForBreed(breed) {
+    return {
+      type: ACTION_TYPES.GET_SUBBREEDS_FOR_BREED
+    };
+  },
+  
+  getImagesForBreed(breed) {
+    return {
+      type: ACTION_TYPES.GET_IMAGES_FOR_BREED
+    };
+  },
+
+  getImagesForSubbreed(subbreed) {
+    return {
+      type: ACTION_TYPES.GET_IMAGES_FOR_SUBBREAD
+    };
   }
-}
-
-export function getSubbreedsForBreed(breed) {
-  return GET_SUBBREEDS_FOR_BREED;
-}
-
-export function getImagesForBreed(breed) {
-  return GET_IMAGES_FOR_BREED;
-}
-
-export function getImagesForSubbreed(subbreed) {
-  return GET_IMAGES_FOR_SUBBREAD;
 }

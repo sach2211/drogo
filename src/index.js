@@ -7,8 +7,8 @@ import { createStore, applyMiddleware } from 'redux'
 import registerServiceWorker from './registerServiceWorker';
 
 
+import { ACTION_TYPES, ACTION_CREATORS } from './redux/actions.js'
 import { drogoAppState } from './redux/reducers.js';
-import { getAllBreeds } from './redux/actions.js'
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
@@ -23,7 +23,7 @@ store.subscribe( () => {
   console.log("Store Updated - ", store.getState());
 })
 
-store.dispatch(getAllBreeds());
+store.dispatch(ACTION_CREATORS.getAllBreedsAsync());
 
 
 ReactDOM.render(

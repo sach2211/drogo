@@ -7,7 +7,7 @@ const client = new api();
 
 class App extends Component {
   componentDidMount() {
-    client.get('http://dog.ceo/api/breeds/list/all');
+    // client.get('http://dog.ceo/api/breeds/list/all');
   }
   render() {
     return (

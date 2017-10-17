@@ -9,15 +9,6 @@ export default class api {
     let defaultHeaders = {
       'Accept': 'application/json',
     };
-    request
-    .get(url)
-    .end( (err, resp) => {
-      if (err)
-        console.log("The request was made, errors encountered ", err, url);
-      else {
-        console.log(resp.body);
-      }
-  
-    })
+    return (request.get(url));
   }
 };
