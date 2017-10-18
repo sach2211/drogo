@@ -25,6 +25,11 @@ export function drogoAppState(initialState = initDrogoState, action) {
       return initialState;
     }
 
+    case ACTION_TYPES.GET_IMAGES_FOR_BREED: {
+      console.info("Fetching images for breed");
+      return initialState;
+    }
+
     default: {
       console.info("Returning default state");
       return initialState;
