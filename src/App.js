@@ -19,8 +19,23 @@ class App extends Component {
         </div>
 
         <div className="App-intro">
-          <button onClick={() => {this.props.getBreedImages()}}>Get Images</button>
+          <h2>Select a dog to know more about it : </h2>
+          {
+            Object.keys(this.props.allBreeds).map((thisBreed) => (
+              <div style={{ 
+                display: 'inline-block',
+                width: '30%', 
+                fontSize: '16px', 
+                border: '2px solid cornflowerblue', 
+                borderRadius: '2px', 
+                padding: '5px',
+                margin: '15px',
+                background: 'floralwhite'
+              }}>{thisBreed}</div>
+            ))
+          }
         </div>
+        <button onClick={() => {this.props.getBreedImages()}}>Get Images</button>
 
       </div>
     );
