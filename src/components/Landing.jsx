@@ -5,7 +5,9 @@ export default class Landing extends React.Component {
   render() {
     return (
       <ul>
-        <li> This is landing page </li>
+        <li> All species </li>
+        <li> Popular Breeds </li>
+        <li> Fun Facts </li>
       </ul>
     );
   }
